@@ -12,5 +12,8 @@ dependencies:
   - pip
   - minimap2=2.26
   - gatk4=4.2.6.1
+  - vcftools=0.1.16
+  - vcfanno=0.3.3
+  - ensembl-vep
   - pip:
     - multiqc==1.10
