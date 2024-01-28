@@ -19,7 +19,7 @@ Before diving in, ensure that Mamba is installed on your system. If not, visit [
    mamba env create -f envs/WGS.yaml
    ```
 
-   This command establishes a new environment named "RNAseq" and installs all necessary dependencies.
+   This command establishes a new environment named "WGS" and installs all necessary dependencies.
    
 2. **Customization**: Modify the config file with your specific parameters.
 
