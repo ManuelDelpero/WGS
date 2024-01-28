@@ -34,7 +34,7 @@ snakemake --cores <num_cores>
 
 ## Optional: Tertiary Analysis Setup for WGS Pipeline
 
-For those interested in tertiary analysis using VEP and ClinVar, set up the VEP cache directory and download the ClinVar VCF:
+For those interested in tertiary analysis using VEP, ClinVar, and generation of a clincal report set up the VEP cache directory and download the ClinVar VCF:
 
 ```bash
 mkdir WGS/VEP_cache
