@@ -1,0 +1,6 @@
+[[annotation]]
+file="clinvar/clinvar.vcf.gz"
+# ID and FILTER are special fields that pull the ID and FILTER columns from the VCF
+fields = ["CLNDN", "CLNREVSTAT"]
+ops=["self", "self"]
+names=["CLNDN", "CLNREVSTAT"]

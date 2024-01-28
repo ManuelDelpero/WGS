@@ -1,0 +1,19 @@
+  ### config file examples for docker
+rawdir:
+  '/data'
+output_dir:
+  '/results'
+
+samples: [
+  'G5',
+  'G6'
+]
+
+ref:
+  '/app/reference/homo_sapiens.GRCh38.dna.primary_assembly.fa'
+
+computing_threads:
+  15
+
+Tertiary:
+  1

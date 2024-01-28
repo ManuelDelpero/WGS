@@ -1,0 +1,16 @@
+name: WGS
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - fastqc=0.12.1
+  - samtools=1.17
+  - snakemake=7.25.4
+  - fastp=0.23.2
+  - qualimap
+  - pip
+  - minimap2=2.26
+  - gatk4=4.2.6.1
+  - pip:
+    - multiqc==1.10
