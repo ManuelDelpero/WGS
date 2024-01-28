@@ -13,10 +13,10 @@ Before diving in, ensure that Mamba is installed on your system. If not, visit [
 
 ## Creating Your Conda Environment
 
-1. **Environment Creation**: Formulate a new environment (e.g., named "RNAseq" or another name of your choosing) and install dependencies from the `environment.yaml` file:
+1. **Environment Creation**: Formulate a new environment (e.g., named "WGS" or another name of your choosing) and install dependencies from the `environment.yaml` file:
    
    ```bash
-   mamba env create -f envs/RNAseq.yaml
+   mamba env create -f envs/WGS.yaml
    ```
 
    This command establishes a new environment named "RNAseq" and installs all necessary dependencies.
