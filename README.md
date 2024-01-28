@@ -28,7 +28,7 @@ Before diving in, ensure that Mamba is installed on your system. If not, visit [
 Execute the following commands to activate your environment and start the pipeline:
 
 ```bash
-conda activate RNAseq
+conda activate WGS
 snakemake --cores <num_cores>
 ```
 
