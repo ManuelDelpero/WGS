@@ -39,8 +39,8 @@ For those interested in tertiary analysis using VEP, ClinVar, and generation of 
 ```bash
 mkdir WGS/VEP_cache
 cd WGS/VEP_cache
-curl -O https://ftp.ensembl.org/pub/release-110/variation/indexed_vep_cache/homo_sapiens_vep_110_GRCh38.tar.gz
-tar xzf homo_sapiens_vep_110_GRCh38.tar.gz
+curl -O https://ftp.ensembl.org/pub/release-111/variation/indexed_vep_cache/homo_sapiens_vep_111_GRCh38.tar.gz
+tar xzf homo_sapiens_vep_111_GRCh38.tar.gz
 cd ..
 cd clinvar
 wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
