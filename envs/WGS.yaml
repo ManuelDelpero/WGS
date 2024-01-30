@@ -15,5 +15,6 @@ dependencies:
   - vcftools=0.1.16
   - vcfanno=0.3.3
   - ensembl-vep
+  - bcftools=1.17
   - pip:
-    - multiqc==1.10
+    - multiqc==1.19
