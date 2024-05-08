@@ -1,19 +1,37 @@
-  ### config file examples for docker
+### REQUIRED ARGUMENTS BY USER
+
+# Do not modify if running using docker
 rawdir:
   '/data'
+
+# Do not modify if running using docker 
 output_dir:
   '/results'
 
 samples: [
-  'G5',
-  'G6'
+  'V350121181_L01_10',
+  'V350121181_L01_11'
 ]
 
+# Do not modify if running with docker, If WES analysis bed file can be specified when running docker image, if using conda/mamba specify here the path
+BED:
+  '/app/bed_file.bed'
+
+
+# Do not modify if running using docker
 ref:
   '/app/reference/homo_sapiens.GRCh38.dna.primary_assembly.fa'
 
+# Choose max number of threads that will be used by each tool independently
 computing_threads:
   15
 
+# 1 to run also tertiary analysis, 0 to not run tertiary analysis
 Tertiary:
   1
+
+# Fastp is used to detect adapters automatically, for rare adapters specify here
+adapters: [
+  'AAGTCGGAGGCCAAGCGGTCTTAGGAAGACAA',
+  'AAGTCGGATCGTAGCCATGTCGTTCTGTGAGCCAAGGAGTTG'
+]
