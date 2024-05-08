@@ -16,6 +16,10 @@ ref_fasta = config['ref']
 ref_fasta_without_extension = os.path.splitext(ref_fasta)[0]
 Tertiary = config['Tertiary']
 num_threads = config['computing_threads']
+adapters = config['adapters']
+adapter1 = adapters[0] if len(adapters) > 1 else None
+adapter2 = adapters[1] if len(adapters) > 1 else None
+bed_file = config['BED']
 
 results_fastqc = expand(qc_dir + '/fastqc/{sample}_sorted_MarkDup_RG_fastqc.html', sample = SAMPLES)
 results_qualimap = expand(qc_dir + '/qualimap/{sample}/qualimapReport.html', sample = SAMPLES)
@@ -41,11 +45,11 @@ rule fastp:
     Trim reads and perform QC using fastp with raw fastq
     """
     input:
-        R1 = raw_dir + '/{sample}_R1.fastq.gz',
-        R2 = raw_dir + '/{sample}_R2.fastq.gz'
+        R1 = raw_dir + '/{sample}_1.fq.gz',
+        R2 = raw_dir + '/{sample}_2.fq.gz'
     output:
-        R1 = qc_dir + '/fastp/{sample}_R1_fastp.fastq.gz',
-        R2 = qc_dir + '/fastp/{sample}_R2_fastp.fastq.gz',
+        R1 = qc_dir + '/fastp/{sample}_1_fastp.fq.gz',
+        R2 = qc_dir + '/fastp/{sample}_2_fastp.fq.gz',
         stats = qc_dir + '/fastp/{sample}_fastp.html'
     log:
         log_dir + '/{sample}.fastp.log'
@@ -53,8 +57,16 @@ rule fastp:
 	    num_threads
     benchmark:
         benchmark_dir + '/fastp/{sample}.tsv'
+    params:
+        adapter_seq_1 = f"--adapter_sequence {adapter1}" if adapter1 else '',
+        adapter_seq_2 = f"--adapter_sequence_r2 {adapter2}" if adapter2 else ''
     shell:
-        'fastp -i {input.R1} -I {input.R2} -o {output.R1} -O {output.R2} -h {output.stats} --thread {threads} &> {log}'
+        """
+        fastp -i {input.R1} -I {input.R2} -o {output.R1} -O {output.R2} -h {output.stats} \
+        {params.adapter_seq_1} \
+        {params.adapter_seq_2} \
+        --thread {threads} &> {log}
+        """
 
 rule ref_index:
     """
@@ -162,9 +174,11 @@ rule qualimap:
         log_dir + '/{sample}_qualimap.log'
     benchmark:
         benchmark_dir + '/qualimap/{sample}.tsv'
+    params:
+        wes = f"-gff {bed_file}" if bed_file else ''
     shell:
         """
-        qualimap bamqc -bam {input.bam} -outdir {qc_dir}/qualimap/{wildcards.sample}/ --java-mem-size=30000M &> {log}
+        qualimap bamqc -bam {input.bam} -outdir {qc_dir}/qualimap/{wildcards.sample}/ {params.wes} --java-mem-size=30000M &> {log}
         """
 		
 rule GATK_create_dict:
