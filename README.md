@@ -1,6 +1,6 @@
-# Enhanced Scalable WGS Pipeline in Snakemake
+# Enhanced Scalable WGS, WES, and panels Pipeline in Snakemake
 
-This pipeline is designed for efficient processing and analysis of Whole Genome Sequencing (WGS) data. Utilizing renowned tools like `GATK4`, `hisat2`, `samtools`, `fastqc`, and `htseq-count`, this pipeline streamlines your WGS data workflow. Configure the pipeline easily through the `config.yaml` file, which holds all essential parameters.
+This pipeline is designed for efficient processing and analysis of Whole Genome Sequencing (WGS), Whole Exome Sequencing (WES), and gene panels data. Utilizing renowned tools like `GATK4`, `minimap2`, `samtools`, `fastqc`, this pipeline streamlines your WGS data workflow. Configure the pipeline easily through the `config.yaml` file, which holds all essential parameters.
 
 ## Getting Started: Prerequisites
 
@@ -52,7 +52,7 @@ wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi
 Prefer Docker? Utilize our Dockerfile to build the image and run the pipeline within a Docker container. The built image includes all dependencies and the GRCh38 reference genome. The configfile can be downaloded from the repository.
 If using Docker the only paramenters to modify in the config file are the samples, computing_threads, and tertiary.
 
-Build and run the pipeline using Docker:
+Build and run the pipeline using Docker (example for WES):
 
 ```bash
 docker build -t wgs .
@@ -60,7 +60,8 @@ docker build -t wgs .
 docker run \
   -v /path/to/config.yaml:/app/config.yaml \
   -v /path/to/raw_data/:/data \
-  -v /path/to/results/:/results \
+  -v /path/to/results/:/results
+  -v /path/to/bed_file/:/app/bed_file.bed \
   wgs \
   conda run -n WGS snakemake --cores 20
 ```
