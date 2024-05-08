@@ -49,7 +49,7 @@ wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi
 
 ## Docker Integration
 
-Prefer Docker? Utilize our Dockerfile to build the image and run the pipeline within a Docker container. The built image includes all dependencies and the GRCh38 reference genome. The configfile can be downaloded from the repository.
+Prefer Docker? Utilize our Dockerfile to build the image and run the pipeline within a Docker container. The built image includes all dependencies and the GRCh38 reference genome (Ofcourse if you want to run tertiary analysis in docker, before to build the image you will need to have the VEP cache downloaded as mentioned in the previous step). The configfile can be downaloded from the repository.
 If using Docker the only paramenters to modify in the config file are the samples, computing_threads, and tertiary.
 
 Build and run the pipeline using Docker (example for WES):
