@@ -20,6 +20,7 @@ RUN mkdir -p /app/reference
 RUN wget -q -O /app/reference/homo_sapiens.GRCh38.dna.primary_assembly.fa.gz https://ftp.ensembl.org/pub/release-110/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz \
     && gunzip /app/reference/homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 
+# Set an environment variable for the default number of cores
 ENV SNAKEMAKE_CORES=1
 
 # Ensure the container is executable
